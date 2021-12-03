@@ -20,3 +20,8 @@ The application includes:
 npm install
 npm run serve
 ```
+## Demo
+
+![alt text](https://github.com/Kjablonska/memory/blob/assets/demo1.mov?raw=true)
+  
+![alt text](https://github.com/Kjablonska/memory/blob/assets/demo2.mov?raw=true)
