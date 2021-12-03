@@ -22,6 +22,9 @@ npm run serve
 ```
 ## Demo
 
-![alt text](https://github.com/Kjablonska/memory/blob/assets/demo1.mov?raw=true)
-  
-![alt text](https://github.com/Kjablonska/memory/blob/assets/demo2.mov?raw=true)
+https://user-images.githubusercontent.com/38289305/144651961-a5b0d792-2d62-4ce8-8e8e-0e272fdf1ed3.mov
+
+
+
+https://user-images.githubusercontent.com/38289305/144652141-22f9479d-95bb-4d91-973d-4563159b19c2.mov
+
