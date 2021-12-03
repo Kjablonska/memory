@@ -1,24 +1,21 @@
-# self-study
+# Memory game
+
+## Description
+Memory game written in Vue 2.  
+Parameters:
+* Number of tiles.
+* Color groups - indicates how many tiles are in one color. 
+
+When game is finished it is saved to the ranking - parameters: number of tiles and the size of the color group and number of moves in which the game was finished.
+
+The application includes:
+* error handling
+* Vuex storing ranking data
+* Local storage
+* Router
 
 ## Project setup
 ```
 npm install
-```
-
-### Compiles and hot-reloads for development
-```
 npm run serve
 ```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
