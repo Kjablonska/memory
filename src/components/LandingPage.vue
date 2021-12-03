@@ -58,7 +58,7 @@ export default {
     start() {
       if (this.isValid) {
         this.$router.push({
-          path: "/memory",
+          path: "/game",
           name: "memory",
           query: { tilesNumber: this.tilesNumber, groupSize: this.groupSize },
         });

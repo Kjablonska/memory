@@ -6,12 +6,13 @@ import Ranking from '@/components/Ranking'
 
 const routes = [
   { path: '/', name: 'home', component: LandingPage },
-  { path: '/memory', name: 'memory', component: Tiles, props: true },
+  { path: '/game', name: 'memory', component: Tiles, props: true },
   { path: '/ranking', name: 'ranking', component: Ranking }
 ]
 
 Vue.use(VueRouter)
 export const router = new VueRouter({
   mode: 'history',
-  routes: routes
+  routes: routes,
+  base: '/memory/'
 })
