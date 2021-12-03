@@ -1,16 +1,15 @@
 <template>
   <div>
     <button
-    @click="flip()"
+      @click="flip()"
       class="tile"
       v-bind:style="[
-        {'top': this.top, 'left': this.left},
+        { top: this.top, left: this.left },
         isFlipped
           ? { 'background-color': color }
-          : { 'background-color': 'grey' }
+          : { 'background-color': 'lightgrey' },
       ]"
-    >
-      </button>
+    ></button>
   </div>
 </template>
 
@@ -28,15 +27,12 @@ export default {
   },
   methods: {
     flip() {
-      console.log(this.isFlipped)
       if (!this.isFlipped) {
-        console.log("FLIP")
-        this.$emit('onCardFlipped')
+        this.$emit("onCardFlipped");
       }
     },
     getTopPosition: function () {
       const randomTop = this.getRandomNumber(150, window.innerHeight - 100);
-      console.log(randomTop)
       return `${randomTop}px`;
     },
     getLeftPosition: function () {
@@ -50,7 +46,6 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
@@ -74,5 +69,4 @@ a {
   position: absolute;
   transition: background-color 500ms linear;
 }
-
 </style>

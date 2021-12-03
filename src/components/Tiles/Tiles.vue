@@ -3,12 +3,12 @@
     <div class="header">
       <h3>Points: {{ this.points }}</h3>
       <h3>Moves: {{ this.moves }}</h3>
-      <button class="back-btn">Back</button>
+      <button class="btn back-btn" @click="goToHome()">Back</button>
+      <button @click="goToRanking()" class="btn ranking-btn">
+        Ranking
+      </button>
     </div>
-    <div v-if="win">
-      Congratulations! You won in {{ moves }} moves.
-      <button @click="goToRanking()" class="back-btn">Ranking</button>
-    </div>
+    <div v-if="win">Congratulations! You won in {{ moves }} moves.</div>
     <template v-for="(group, id) in colors">
       <Tile
         v-for="n in group.groupSize"
@@ -48,6 +48,7 @@ export default {
     }
 
     let counter = 0;
+    let timeout = 0;
     return {
       win,
       colors,
@@ -59,6 +60,7 @@ export default {
       groupSize,
       groupsNumber,
       tilesNumber,
+      timeout,
     };
   },
   methods: {
@@ -76,34 +78,40 @@ export default {
       return `#${hexVal}`;
     },
     onCardFlipped(id, color) {
+      clearTimeout(this.timeout);
       Vue.set(this.tilesState, id, true);
-      console.log(this.tilesState);
       this.flipped = [...this.flipped, { id, color }];
 
-      if (this.flipped.length === this.groupSize) {
-        setTimeout(() => {
-          this.moves++;
+      if (this.flipped.length > 1) {
+        this.timeout = setTimeout(() => {
           this.checkIfPair();
-        }, 1000);
+        }, 500);
       }
     },
     checkIfPair() {
-      // TODO
-      const card1 = this.flipped[0];
-      const card2 = this.flipped[1];
+      const color = this.flipped[0].color;
+      const isMatch = this.flipped.every((card) => card.color === color);
 
-      if (card1.color === card2.color) {
-        this.points++;
-        if (this.points === this.groupsNumber) {
-          this.addToRanking();
-          this.win = true;
+      if (isMatch) {
+        if (this.flipped.length === this.groupSize) {
+          this.points++;
+          this.moves++;
+          this.checkIfWin();
+          this.flipped = [];
         }
       } else {
+        this.moves++;
         this.flipped.forEach((tile) => {
           Vue.set(this.tilesState, tile.id, false);
         });
+        this.flipped = [];
       }
-      this.flipped = [];
+    },
+    checkIfWin() {
+      if (this.points === this.groupsNumber) {
+        this.win = true;
+        this.addToRanking();
+      }
     },
     goToRanking() {
       this.$router.push({ path: "/ranking", name: "ranking" });
@@ -117,6 +125,9 @@ export default {
       this.$store.commit("addGame", {
         newGame,
       });
+    },
+    goToHome() {
+      this.$router.push({ paht: "/", name: "home" });
     },
   },
 };
@@ -152,11 +163,16 @@ a {
   height: 30px;
 }
 
-.back-btn .btn {
+.back-btn {
   width: 50px;
 }
 
-.ranking-btn .btn {
-  width: 60px;
+.ranking-btn {
+  width: 70px;
+  margin-left: 5px;
+}
+
+.ranking {
+  width: 80px;
 }
 </style>
