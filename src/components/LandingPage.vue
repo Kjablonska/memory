@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     isValid() {
-      return this.tilesNumber % this.groupSize === 0;
+      return this.tilesNumber > 0 && this.tilesNumber % this.groupSize === 0 && this.tilesNumber >= 2 * this.groupSize;
     },
   },
   methods: {
