@@ -9,6 +9,7 @@
       </button>
     </div>
     <div v-if="win">Congratulations! You won in {{ moves }} moves.</div>
+    <div v-show="!win">Select {{groupSize - flipped.length}} tiles.</div>
     <template v-for="(group, id) in colors">
       <Tile
         v-for="n in group.groupSize"
