@@ -7,6 +7,7 @@ Parameters:
 * Color groups - indicates how many tiles are in one color. 
 
 When game is finished it is saved to the ranking - parameters: number of tiles and the size of the color group and number of moves in which the game was finished.
+Colors and tile's position are randomly generated. 
 
 The application includes:
 * error handling
